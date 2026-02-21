@@ -90,3 +90,70 @@ var
 
 // classStudent.push("ram");
 // console.log(classStudent);
+
+const shopNowBtn = document.getElementById("shopNowBtn");
+console.log(shopNowBtn);
+//Poiting the nav tag
+const mainNav = document.getElementsByClassName("nav");
+console.log(mainNav);
+const navLink = mainNav[0].querySelectorAll(`.nav a`);
+console.log(navLink);
+const anchorTag = document.querySelector(".nav");
+console.log(anchorTag);
+const mainContent = document.querySelector(".main");
+
+shopNowBtn.innerText = "shopping";
+
+console.log(shopNowBtn.innerText);
+
+console.log(mainNav[0].innerHTML);
+
+console.log(navLink[0].getAttribute("href"));
+
+// shopNowBtn.setAttribute("disabled", "true");
+
+console.log((shopNowBtn.style.backgroundColor = "rgb(255, 0, 0)"));
+
+const products = [
+  { name: "Classic Shoes", price: "49.99", id: 1 },
+  { name: "Smart Watch", price: "99.99", id: 2 },
+  { name: "Wireless Earbuds", price: "59.99", id: 3 },
+  { name: "Laptop", price: "1299.99", id: 4 },
+  { name: "Tshirt", price: "19.99", id: 5 }
+];
+
+const productCard = document.createElement("section");
+
+productCard.innerHTML = "<h2>Featured Products</h2>";
+
+productCard.setAttribute("class", "products-section");
+
+const productGrid = document.createElement("div");
+
+productGrid.setAttribute("class", "product-grid");
+
+productGrid.setAttribute("id", "products-container");
+
+mainContent.appendChild(productCard);
+
+productCard.appendChild(productGrid);
+
+for (let i = 0; i < products.length; i++) {
+  const productCard = document.createElement("div");
+  productCard.setAttribute("class", "product-card");
+  productCard.setAttribute("data-id", products[i].id);
+  productCard.innerHTML = `
+    <h3>${products[i].name}</h3>
+    <p>Price: $${products[i].price}</p>
+    `;
+  productGrid.appendChild(productCard);
+}
+
+const customerReviews = document.createElement("div");
+customerReviews.setAttribute("class", "customer-reviews");
+customerReviews.innerHTML = "<h2>Customer Featured Products</h2>";
+productCard.after(customerReviews);
+
+shopNowBtn.addEventListener("click", function () {
+  alert("Shop Now button clicked!");
+});

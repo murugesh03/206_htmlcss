@@ -176,9 +176,6 @@ h3::first-letter {
 }
 
 @media (max-width: 768px) {
-  .hero button {
-    color: blue;
-  }
   .header {
     grid-template-columns: 1fr;
     text-align: center;
