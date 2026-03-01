@@ -364,3 +364,170 @@ const totalValue = numValue.reduce((acc, curr) => {
   return acc + curr;
 }, addVaue);
 console.log(totalValue);
+
+const mutiplesOfTwo = [2, 4, 6, 8, 10];
+
+const doubleValues = mutiplesOfTwo
+  .map((val) => val * 2)
+  .filter((val) => val > 10)
+  .reduce((cur, sec) => cur + sec, 0);
+
+//Objects
+
+const studentInfo = {
+  name: "John",
+  age: 20,
+  grade: "A",
+  address: {
+    street: "123 Main St",
+    city: "Anytown",
+    zip: "12345"
+  },
+  score: [50, 40, 20, 100],
+  isPresent: false
+};
+// 3 3/1,3/2
+const studentInfoKeys = Object.keys(studentInfo);
+console.log(studentInfoKeys);
+console.log(Object.values(studentInfo));
+console.log(Object.entries(studentInfo));
+
+console.log(studentInfo.name); // dot notation
+console.log(studentInfo["name"]); // square notation
+
+for (let key of studentInfoKeys) {
+  console.log(key, studentInfo[key]);
+}
+
+const studentsList = [
+  {
+    name: "arun",
+    gender: "Male",
+    physics: 88,
+    maths: 87,
+    english: 78
+  },
+  {
+    name: "rajesh",
+    gender: "Male",
+    physics: 96,
+    maths: 100,
+    english: 95
+  },
+  {
+    name: "moorthy",
+    gender: "Male",
+    physics: 89,
+    maths: 90,
+    english: 70
+  }
+];
+
+const adminPermission = ["name", "gender"];
+const filteredList = studentsList.map((val) => {
+  const filteredStudent = {};
+  for (let key of adminPermission) {
+    filteredStudent[key] = val[key];
+  }
+  return filteredStudent;
+});
+
+console.log(filteredList);
+
+const studentInfo2 = Object.assign({}, studentInfo); // Shallow copy
+studentInfo2.grade = "B";
+studentInfo2.address.city = "New York";
+// console.log(studentInfo, "studentInfo1");
+console.log(studentInfo2, "studentInfo2");
+
+//shallow copy and deep copy
+const studentInfo2Deep = JSON.parse(JSON.stringify(studentInfo)); // Deep copy
+studentInfo2Deep.grade = "C";
+studentInfo2Deep.address.city = "Los Angeles";
+console.log(studentInfo, "studentInfo1");
+console.log(studentInfo2Deep, "studentInfo2Deep");
+studentInfo2Deep.score.push(90);
+
+const studentInfo2Deep2 = {
+  ...studentInfo,
+  score: [...studentInfo.score],
+  address: { ...studentInfo.address }
+};
+studentInfo2Deep2.address.city = "washington";
+console.log(studentInfo2Deep2, "studentInfo2Deep2");
+
+const studentInfo2Deep3 = structuredClone(studentInfo); // Deep clone
+
+studentInfo2Deep3.address.city = "nivada";
+
+const studentObjectFreeze = Object.freeze(studentInfo2Deep3); //shallow clone
+studentObjectFreeze.gender = "male";
+studentObjectFreeze.grade = "C";
+studentObjectFreeze.address.street = "1231231";
+console.log(studentInfo2Deep3, "studentInfo2Deep3");
+console.log(studentObjectFreeze, "studentObjectFreeze");
+
+const studentObjetSeal = Object.seal(structuredClone(studentInfo)); //shallow copy
+studentObjetSeal.gender = "male";
+studentObjetSeal.grade = "C";
+studentObjetSeal.address.street = "1231231";
+delete studentInfo.name;
+delete studentObjetSeal.name;
+
+console.log(studentObjetSeal, "studentObjetSeal");
+
+//ES6 features
+
+// function getName(a, b) {
+//   return a + b;
+// }
+
+const getName = (a, b) => a + b;
+
+const name = "abram";
+
+console.log("Welcome " + name + ", Good morning!");
+console.log(`Welcome ${name}, Good morning!, 
+  welcome on board
+  ${name}`);
+
+//destructing
+
+// array destructuring
+const numbers = [30, 40, 4, 4, 5];
+// const englisMark = numbers[0];
+const [engishMark, scienceMark, french, tamil, hindi] = numbers;
+console.log(engishMark, scienceMark, french, tamil, hindi);
+
+//object destructuring
+const person = {
+  name: "John",
+  age: 30,
+  city: "New York"
+};
+// const name = person.name;
+// const personName =  person.name
+const { city, age, name: personName } = person;
+console.log(personName, age, city);
+
+//default parameters
+
+const getValue = (a = 10, b = 2) => a * b;
+
+console.log(getValue(4));
+
+//spread operator
+const studentInfo4 = {
+  ...studentInfo,
+  score: [...studentInfo.score],
+  address: { ...studentInfo.address }
+};
+
+//reset operator
+
+function getSum(...numbers) {
+  console.log(numbers, "reset operator");
+  return numbers.reduce((sum, num) => sum + num, 0);
+}
+
+console.log(getSum(1, 2, 3, 4, 5, 1231, 12, 1, 1, 1));
