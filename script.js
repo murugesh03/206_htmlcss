@@ -1,3 +1,6 @@
+// import values from "./util";
+// import { addValues } from "./util";
+// const axios = require("axios/dist/browser/axios.cjs");
 /*
 Primitive Data type
 String - "Hello world",'Hello world'
@@ -315,219 +318,334 @@ let students = [1, 2, 4, 5, 3, 6, 67];
 // [0, 1, 2, 3, 4, 5] - one dimensional array
 // [[], []] - two dimensional array
 
-const student = {
-  name: "John",
-  age: 20,
-  grade: "A"
-};
+// const student = {
+//   name: "John",
+//   age: 20,
+//   grade: "A"
+// };
 
-const dtStudent = Object.entries(student);
-console.log(dtStudent);
-console.log(dtStudent[0][0]); // Logs "name"
-console.log(dtStudent[0][1]); // Logs "John"
+// const dtStudent = Object.entries(student);
+// console.log(dtStudent);
+// console.log(dtStudent[0][0]); // Logs "name"
+// console.log(dtStudent[0][1]); // Logs "John"
 
-const numValue = [1, 4, 6, 78, 4, 2, 2]; // one dimensional array
+// const numValue = [1, 4, 6, 78, 4, 2, 2]; // one dimensional array
 
-numValue.push(6);
-console.log(numValue);
-console.log(numValue.length);
-console.log(numValue.pop());
-const newValues = structuredClone(numValue);
+// numValue.push(6);
+// console.log(numValue);
+// console.log(numValue.length);
+// console.log(numValue.pop());
+// const newValues = structuredClone(numValue);
 
-console.log(numValue);
-newValues.splice(-1, 0, 10, 12);
-console.log(newValues);
-console.log(numValue.slice(1, 4));
+// console.log(numValue);
+// newValues.splice(-1, 0, 10, 12);
+// console.log(newValues);
+// console.log(numValue.slice(1, 4));
 
-const doubledValues = numValue.map(function (val, index, array) {
-  return val * 2;
-});
-console.log(doubledValues);
-console.log(numValue);
+// const doubledValues = numValue.map(function (val, index, array) {
+//   return val * 2;
+// });
+// console.log(doubledValues);
+// console.log(numValue);
 
-newValues.forEach((value, index) => console.log(value, index));
+// newValues.forEach((value, index) => console.log(value, index));
 
-const filteredValue = newValues.filter((value) => value > 8);
-console.log(filteredValue);
+// const filteredValue = newValues.filter((value) => value > 8);
+// console.log(filteredValue);
 
-const findValue = newValues.find((value, index) => {
-  console.log(value, index, "thhis si find");
-  return value == 2;
-});
-console.log(findValue);
+// const findValue = newValues.find((value, index) => {
+//   console.log(value, index, "thhis si find");
+//   return value == 2;
+// });
+// console.log(findValue);
 
-console.log([5, 6, 7].every((n) => n > 2));
-console.log([5, 6, 7].some((n) => n > 2));
-const addVaue = 3;
-const totalValue = numValue.reduce((acc, curr) => {
-  console.log(acc, curr);
-  return acc + curr;
-}, addVaue);
-console.log(totalValue);
+// console.log([5, 6, 7].every((n) => n > 2));
+// console.log([5, 6, 7].some((n) => n > 2));
+// const addVaue = 3;
+// const totalValue = numValue.reduce((acc, curr) => {
+//   console.log(acc, curr);
+//   return acc + curr;
+// }, addVaue);
+// console.log(totalValue);
 
-const mutiplesOfTwo = [2, 4, 6, 8, 10];
+// const mutiplesOfTwo = [2, 4, 6, 8, 10];
 
-const doubleValues = mutiplesOfTwo
-  .map((val) => val * 2)
-  .filter((val) => val > 10)
-  .reduce((cur, sec) => cur + sec, 0);
+// const doubleValues = mutiplesOfTwo
+//   .map((val) => val * 2)
+//   .filter((val) => val > 10)
+//   .reduce((cur, sec) => cur + sec, 0);
 
-//Objects
+// //Objects
 
-const studentInfo = {
-  name: "John",
-  age: 20,
-  grade: "A",
-  address: {
-    street: "123 Main St",
-    city: "Anytown",
-    zip: "12345"
-  },
-  score: [50, 40, 20, 100],
-  isPresent: false
-};
-// 3 3/1,3/2
-const studentInfoKeys = Object.keys(studentInfo);
-console.log(studentInfoKeys);
-console.log(Object.values(studentInfo));
-console.log(Object.entries(studentInfo));
+// const studentInfo = {
+//   name: "John",
+//   age: 20,
+//   grade: "A",
+//   address: {
+//     street: "123 Main St",
+//     city: "Anytown",
+//     zip: "12345"
+//   },
+//   score: [50, 40, 20, 100],
+//   isPresent: false
+// };
+// // 3 3/1,3/2
+// const studentInfoKeys = Object.keys(studentInfo);
+// console.log(studentInfoKeys);
+// console.log(Object.values(studentInfo));
+// console.log(Object.entries(studentInfo));
 
-console.log(studentInfo.name); // dot notation
-console.log(studentInfo["name"]); // square notation
+// console.log(studentInfo.name); // dot notation
+// console.log(studentInfo["name"]); // square notation
 
-for (let key of studentInfoKeys) {
-  console.log(key, studentInfo[key]);
-}
-
-const studentsList = [
-  {
-    name: "arun",
-    gender: "Male",
-    physics: 88,
-    maths: 87,
-    english: 78
-  },
-  {
-    name: "rajesh",
-    gender: "Male",
-    physics: 96,
-    maths: 100,
-    english: 95
-  },
-  {
-    name: "moorthy",
-    gender: "Male",
-    physics: 89,
-    maths: 90,
-    english: 70
-  }
-];
-
-const adminPermission = ["name", "gender"];
-const filteredList = studentsList.map((val) => {
-  const filteredStudent = {};
-  for (let key of adminPermission) {
-    filteredStudent[key] = val[key];
-  }
-  return filteredStudent;
-});
-
-console.log(filteredList);
-
-const studentInfo2 = Object.assign({}, studentInfo); // Shallow copy
-studentInfo2.grade = "B";
-studentInfo2.address.city = "New York";
-// console.log(studentInfo, "studentInfo1");
-console.log(studentInfo2, "studentInfo2");
-
-//shallow copy and deep copy
-const studentInfo2Deep = JSON.parse(JSON.stringify(studentInfo)); // Deep copy
-studentInfo2Deep.grade = "C";
-studentInfo2Deep.address.city = "Los Angeles";
-console.log(studentInfo, "studentInfo1");
-console.log(studentInfo2Deep, "studentInfo2Deep");
-studentInfo2Deep.score.push(90);
-
-const studentInfo2Deep2 = {
-  ...studentInfo,
-  score: [...studentInfo.score],
-  address: { ...studentInfo.address }
-};
-studentInfo2Deep2.address.city = "washington";
-console.log(studentInfo2Deep2, "studentInfo2Deep2");
-
-const studentInfo2Deep3 = structuredClone(studentInfo); // Deep clone
-
-studentInfo2Deep3.address.city = "nivada";
-
-const studentObjectFreeze = Object.freeze(studentInfo2Deep3); //shallow clone
-studentObjectFreeze.gender = "male";
-studentObjectFreeze.grade = "C";
-studentObjectFreeze.address.street = "1231231";
-console.log(studentInfo2Deep3, "studentInfo2Deep3");
-console.log(studentObjectFreeze, "studentObjectFreeze");
-
-const studentObjetSeal = Object.seal(structuredClone(studentInfo)); //shallow copy
-studentObjetSeal.gender = "male";
-studentObjetSeal.grade = "C";
-studentObjetSeal.address.street = "1231231";
-delete studentInfo.name;
-delete studentObjetSeal.name;
-
-console.log(studentObjetSeal, "studentObjetSeal");
-
-//ES6 features
-
-// function getName(a, b) {
-//   return a + b;
+// for (let key of studentInfoKeys) {
+//   console.log(key, studentInfo[key]);
 // }
 
-const getName = (a, b) => a + b;
+// const studentsList = [
+//   {
+//     name: "arun",
+//     gender: "Male",
+//     physics: 88,
+//     maths: 87,
+//     english: 78
+//   },
+//   {
+//     name: "rajesh",
+//     gender: "Male",
+//     physics: 96,
+//     maths: 100,
+//     english: 95
+//   },
+//   {
+//     name: "moorthy",
+//     gender: "Male",
+//     physics: 89,
+//     maths: 90,
+//     english: 70
+//   }
+// ];
 
-const name = "abram";
+// const adminPermission = ["name", "gender"];
+// const filteredList = studentsList.map((val) => {
+//   const filteredStudent = {};
+//   for (let key of adminPermission) {
+//     filteredStudent[key] = val[key];
+//   }
+//   return filteredStudent;
+// });
 
-console.log("Welcome " + name + ", Good morning!");
-console.log(`Welcome ${name}, Good morning!, 
-  welcome on board
-  ${name}`);
+// console.log(filteredList);
 
-//destructing
+// const studentInfo2 = Object.assign({}, studentInfo); // Shallow copy
+// studentInfo2.grade = "B";
+// studentInfo2.address.city = "New York";
+// // console.log(studentInfo, "studentInfo1");
+// console.log(studentInfo2, "studentInfo2");
 
-// array destructuring
-const numbers = [30, 40, 4, 4, 5];
-// const englisMark = numbers[0];
-const [engishMark, scienceMark, french, tamil, hindi] = numbers;
-console.log(engishMark, scienceMark, french, tamil, hindi);
+// //shallow copy and deep copy
+// const studentInfo2Deep = JSON.parse(JSON.stringify(studentInfo)); // Deep copy
+// studentInfo2Deep.grade = "C";
+// studentInfo2Deep.address.city = "Los Angeles";
+// console.log(studentInfo, "studentInfo1");
+// console.log(studentInfo2Deep, "studentInfo2Deep");
+// studentInfo2Deep.score.push(90);
 
-//object destructuring
-const person = {
-  name: "John",
-  age: 30,
-  city: "New York"
-};
+// const studentInfo2Deep2 = {
+//   ...studentInfo,
+//   score: [...studentInfo.score],
+//   address: { ...studentInfo.address }
+// };
+// studentInfo2Deep2.address.city = "washington";
+// console.log(studentInfo2Deep2, "studentInfo2Deep2");
+
+// const studentInfo2Deep3 = structuredClone(studentInfo); // Deep clone
+
+// studentInfo2Deep3.address.city = "nivada";
+
+// const studentObjectFreeze = Object.freeze(studentInfo2Deep3); //shallow clone
+// studentObjectFreeze.gender = "male";
+// studentObjectFreeze.grade = "C";
+// studentObjectFreeze.address.street = "1231231";
+// console.log(studentInfo2Deep3, "studentInfo2Deep3");
+// console.log(studentObjectFreeze, "studentObjectFreeze");
+
+// const studentObjetSeal = Object.seal(structuredClone(studentInfo)); //shallow copy
+// studentObjetSeal.gender = "male";
+// studentObjetSeal.grade = "C";
+// studentObjetSeal.address.street = "1231231";
+// delete studentInfo.name;
+// delete studentObjetSeal.name;
+
+// console.log(studentObjetSeal, "studentObjetSeal");
+
+// //ES6 features
+
+// // function getName(a, b) {
+// //   return a + b;
+// // }
+
+// const getName = (a, b) => a + b;
+
+// const name = "abram";
+
+// console.log("Welcome " + name + ", Good morning!");
+// console.log(`Welcome ${name}, Good morning!,
+//   welcome on board
+//   ${name}`);
+
+// //destructing
+
+// // array destructuring
+// const numbers = [30, 40, 4, 4, 5];
+// // const englisMark = numbers[0];
+// const [engishMark, scienceMark, french, tamil, hindi] = numbers;
+// console.log(engishMark, scienceMark, french, tamil, hindi);
+
+// //object destructuring
+// const person = {
+//   name: "John",
+//   age: 30,
+//   city: "New York"
+// };
 // const name = person.name;
 // const personName =  person.name
-const { city, age, name: personName } = person;
-console.log(personName, age, city);
+// const { city, age, name: personName } = person;
+// console.log(personName, age, city);
 
 //default parameters
 
-const getValue = (a = 10, b = 2) => a * b;
+// const getValue = (a = 10, b = 2) => a * b;
 
-console.log(getValue(4));
+// console.log(getValue(4));
 
 //spread operator
-const studentInfo4 = {
-  ...studentInfo,
-  score: [...studentInfo.score],
-  address: { ...studentInfo.address }
-};
+// const studentInfo4 = {
+//   ...studentInfo,
+//   score: [...studentInfo.score],
+//   address: { ...studentInfo.address }
+// };
 
 //reset operator
 
-function getSum(...numbers) {
-  console.log(numbers, "reset operator");
-  return numbers.reduce((sum, num) => sum + num, 0);
-}
+// function getSum(...numbers) {
+//   console.log(numbers, "reset operator");
+//   return numbers.reduce((sum, num) => sum + num, 0);
+// }
 
-console.log(getSum(1, 2, 3, 4, 5, 1231, 12, 1, 1, 1));
+// console.log(getSum(1, 2, 3, 4, 5, 1231, 12, 1, 1, 1));
+
+//Promise
+
+//Synchronous vs asynchronous
+
+// getUser(function (user) {
+//   getOrders(user.id, function (orders) {
+//     getOrderDetails(orders, function (details) {
+//       console.log(details);
+//     });
+//   });
+// });
+
+// setTimeout;
+// setInterval;
+// clearInterval;
+// clearTimeout;
+const fetchUser = new Promise((resolve, reject) => {
+  // Simulate an API call
+  setTimeout(() => {
+    const user = { id: 1, name: "John" };
+    reject("user not found");
+  }, 1000);
+});
+
+fetchUser
+  .then((user) => {
+    console.log(user, "this is the user");
+  })
+  .then(() => console.log("second then"))
+  .catch((error) => console.log(error, "this is the error"))
+  .finally(() => console.log("finally"));
+
+axios("https://jsonplaceholder.typicode.com/todos/")
+  .then((res) => {
+    console.log(res, "this is axios");
+  })
+  .then((data) => console.log(data))
+  .catch((error) => console.log(error, "todos error"));
+
+fetch("https://jsonplaceholder.typicode.com/todos/")
+  .then((res) => {
+    console.log(res, "this is fetch");
+    return res.json();
+  })
+  .then((data) => console.log(data))
+  .catch((error) => console.log(error, "todos error"));
+
+//async await using try catch block
+const fetchTodos = async () => {
+  try {
+    // const allPromisse = Promise.all([])
+    const data = await fetch("https://jsonplaceholder.typicode.com/todos/");
+    const jsonData = await data.json();
+    console.log(jsonData);
+  } catch (error) {
+    console.log(error, "this is error form fetchTodos");
+  } finally {
+    console.log("finally block executed");
+  }
+};
+
+fetchTodos();
+
+// const timeoutId = setTimeout(() => console.log("i am settimeout"), 10000);
+// const intervalId = setInterval(() => console.log("this is interval"), 1000);
+
+// clearTimeout(timeoutId);
+// clearInterval(intervalId);
+
+const p1 = Promise.resolve("userdata");
+
+const p2 = Promise.reject("orderdata");
+const p3 = Promise.resolve("payment data");
+
+//If any one promises fails all the promises are rejected it doesnt wait for the remaining promise to be executed
+Promise.all([p1, p2, p3])
+  .then((values) => console.log(values, "this is all the data"))
+  .catch((error) => console.log(error, "promise.all error"));
+
+Promise.all(["user", "orders", "notifications"]);
+
+//It executes the first promise that settles
+const prm1 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("first promise resolved");
+  }, 2000);
+});
+const prm2 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    reject("second promise rejected");
+  }, 1000);
+});
+
+Promise.race([prm1, prm2])
+  .then((value) => console.log(value, "promise to race"))
+  .catch((error) => console.log(error, "this is race error"));
+
+const paymentStatus = fetch();
+
+const paymentTimeout = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    reject("Payment timeout");
+  }, 5000);
+});
+
+Promise.race([paymentStatus, paymentTimeout])
+  .then((value) => console.log(value, "promise to race"))
+  .catch((error) => console.log(error, "this is race error"));
+
+//It will wait untill all the promise are executed and it will return if is rejected or resolved
+
+Promise.allSettled([p1, p2, p3])
+  .then((data) => console.log(data, "this is from allsettled"))
+  .catch((error) => console.log(error, "error is from allsettled"));
