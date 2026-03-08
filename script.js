@@ -551,101 +551,260 @@ let students = [1, 2, 4, 5, 3, 6, 67];
 // setInterval;
 // clearInterval;
 // clearTimeout;
-const fetchUser = new Promise((resolve, reject) => {
-  // Simulate an API call
-  setTimeout(() => {
-    const user = { id: 1, name: "John" };
-    reject("user not found");
-  }, 1000);
+// const fetchUser = new Promise((resolve, reject) => {
+//   // Simulate an API call
+//   setTimeout(() => {
+//     const user = { id: 1, name: "John" };
+//     reject("user not found");
+//   }, 1000);
+// });
+
+// fetchUser
+//   .then((user) => {
+//     console.log(user, "this is the user");
+//   })
+//   .then(() => console.log("second then"))
+//   .catch((error) => console.log(error, "this is the error"))
+//   .finally(() => console.log("finally"));
+
+// axios("https://jsonplaceholder.typicode.com/todos/")
+//   .then((res) => {
+//     console.log(res, "this is axios");
+//   })
+//   .then((data) => console.log(data))
+//   .catch((error) => console.log(error, "todos error"));
+
+// fetch("https://jsonplaceholder.typicode.com/todos/")
+//   .then((res) => {
+//     console.log(res, "this is fetch");
+//     return res.json();
+//   })
+//   .then((data) => console.log(data))
+//   .catch((error) => console.log(error, "todos error"));
+
+// //async await using try catch block
+// const fetchTodos = async () => {
+//   try {
+//     // const allPromisse = Promise.all([])
+//     const data = await fetch("https://jsonplaceholder.typicode.com/todos/");
+//     const jsonData = await data.json();
+//     console.log(jsonData);
+//   } catch (error) {
+//     console.log(error, "this is error form fetchTodos");
+//   } finally {
+//     console.log("finally block executed");
+//   }
+// };
+
+// fetchTodos();
+
+// // const timeoutId = setTimeout(() => console.log("i am settimeout"), 10000);
+// // const intervalId = setInterval(() => console.log("this is interval"), 1000);
+
+// // clearTimeout(timeoutId);
+// // clearInterval(intervalId);
+
+// const p1 = Promise.resolve("userdata");
+
+// const p2 = Promise.reject("orderdata");
+// const p3 = Promise.resolve("payment data");
+
+// //If any one promises fails all the promises are rejected it doesnt wait for the remaining promise to be executed
+// Promise.all([p1, p2, p3])
+//   .then((values) => console.log(values, "this is all the data"))
+//   .catch((error) => console.log(error, "promise.all error"));
+
+// Promise.all(["user", "orders", "notifications"]);
+
+// //It executes the first promise that settles
+// const prm1 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve("first promise resolved");
+//   }, 2000);
+// });
+// const prm2 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     reject("second promise rejected");
+//   }, 1000);
+// });
+
+// Promise.race([prm1, prm2])
+//   .then((value) => console.log(value, "promise to race"))
+//   .catch((error) => console.log(error, "this is race error"));
+
+// const paymentStatus = fetch();
+
+// const paymentTimeout = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     reject("Payment timeout");
+//   }, 5000);
+// });
+
+// Promise.race([paymentStatus, paymentTimeout])
+//   .then((value) => console.log(value, "promise to race"))
+//   .catch((error) => console.log(error, "this is race error"));
+
+// //It will wait untill all the promise are executed and it will return if is rejected or resolved
+
+// Promise.allSettled([p1, p2, p3])
+//   .then((data) => console.log(data, "this is from allsettled"))
+//   .catch((error) => console.log(error, "error is from allsettled"));
+
+// sessionStorage.setItem("name", "jon dhoe");
+// sessionStorage.setItem("marks", JSON.stringify([85, 90, 78]));
+// console.log(JSON.parse(sessionStorage.getItem("marks")));
+// console.log(JSON.parse(sessionStorage.getItem("studentinfo")));
+// sessionStorage.removeItem("name");
+// console.log(sessionStorage.length);
+
+// localStorage.setItem("name", "sam");
+// localStorage.setItem("marks", JSON.stringify([85, 90, 78]));
+// console.log(JSON.parse(localStorage.getItem("marks")));
+// console.log(JSON.parse(localStorage.getItem("studentinfo")));
+// localStorage.removeItem("name");
+// console.log(localStorage.length);
+
+// document.cookie =
+//   "username=john; expires=Sun, 08 Mar 2026 10:30:00 UTC; path=/";
+// document.cookie = "theme=dark";
+// const seperatedCookies = document.cookie.split(";").map((val) => {
+//   console.log(val.length, val.trim().length);
+//   const splitVal = val.split("=").map((v) => v.trim());
+//   const obj = { [splitVal[0]]: splitVal[1] };
+//   console.log(document.cookie.split(";"), splitVal);
+//   return obj;
+// });
+// console.log(seperatedCookies);
+
+// function getValue() {
+//   const a = 10;
+
+//   return function (b) {
+//     return a + b;
+//   };
+// }
+// // const addValue = getValue()(5);// IIFE - immedialtey invoked function expression
+// const addValue = getValue();
+// console.log(addValue(5));
+
+// const student = {
+//   name: "sam",
+//   score: [10, 12, 14],
+//   calculateScore: function () {
+//     return this.score.reduce((acc, curr) => acc + curr, 0);
+//   }
+// };
+
+// console.log(student.calculateScore());
+
+// function Person(name, age) {
+//   this.name = name;
+//   this.age = age;
+//   this.printage = function () {
+//     return `${this.name} is ${this.age} years old.`;
+//   };
+// }
+
+// Person.prototype.printAge = function () {
+//   return `${this.name} is ${this.age} years old.`;
+// };
+
+// const person1 = new Person("Alice", 30);
+// const person2 = new Person("Bob", 25);
+// console.log(person1.printAge());
+// console.log(person2.printAge());
+
+console.log("A");
+console.log("B");
+console.log("C");
+
+/*
+
+execution priority
+callstack | micro task | macrotask 
+
+Event loop - callstack | micro task | macro task 
+
+class stack 
+Micro task - promise 
+macro task - Web APIs,callback queue,
+*/
+
+// Call stack
+// function one() {
+//   two();
+// }
+
+// function two() {
+//   console.log("hello");
+// }
+
+// one();
+
+/*
+Execustion order:
+
+one()
+two()
+console.log("Hello")
+*/
+
+//Micro task
+
+console.log("start");
+setTimeout(() => {
+  console.log("micro task timeout");
+}, 2000);
+
+Promise.resolve().then(() => {
+  console.log("micro task promise");
 });
+console.log("end");
 
-fetchUser
-  .then((user) => {
-    console.log(user, "this is the user");
-  })
-  .then(() => console.log("second then"))
-  .catch((error) => console.log(error, "this is the error"))
-  .finally(() => console.log("finally"));
+/*
+Execustion order:
 
-axios("https://jsonplaceholder.typicode.com/todos/")
-  .then((res) => {
-    console.log(res, "this is axios");
-  })
-  .then((data) => console.log(data))
-  .catch((error) => console.log(error, "todos error"));
+one()
+two()
+console.log("Hello")
 
-fetch("https://jsonplaceholder.typicode.com/todos/")
-  .then((res) => {
-    console.log(res, "this is fetch");
-    return res.json();
-  })
-  .then((data) => console.log(data))
-  .catch((error) => console.log(error, "todos error"));
 
-//async await using try catch block
-const fetchTodos = async () => {
-  try {
-    // const allPromisse = Promise.all([])
-    const data = await fetch("https://jsonplaceholder.typicode.com/todos/");
-    const jsonData = await data.json();
-    console.log(jsonData);
-  } catch (error) {
-    console.log(error, "this is error form fetchTodos");
-  } finally {
-    console.log("finally block executed");
-  }
-};
+Expected output 
+start 
+end
+micro task promise
+micro task timeout
+*/
 
-fetchTodos();
+//Macrotask
+//Web APIs
 
-// const timeoutId = setTimeout(() => console.log("i am settimeout"), 10000);
-// const intervalId = setInterval(() => console.log("this is interval"), 1000);
+/*
+setTimout, setInternval, fetch, dom Events
+This WebAPI's are not under call stack 
+*/
+//eg
+// console.log("start");
+// setTimeout(() => {
+//   console.log("timer done");
+// }, 2000);
+// console.log("end");
 
-// clearTimeout(timeoutId);
-// clearInterval(intervalId);
+// //callback queues (task queue)
+// setTimeout(() => {
+//   console.log("timer finsihed");
+// }, 2000);
 
-const p1 = Promise.resolve("userdata");
+//Debounce
 
-const p2 = Promise.reject("orderdata");
-const p3 = Promise.resolve("payment data");
-
-//If any one promises fails all the promises are rejected it doesnt wait for the remaining promise to be executed
-Promise.all([p1, p2, p3])
-  .then((values) => console.log(values, "this is all the data"))
-  .catch((error) => console.log(error, "promise.all error"));
-
-Promise.all(["user", "orders", "notifications"]);
-
-//It executes the first promise that settles
-const prm1 = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve("first promise resolved");
-  }, 2000);
-});
-const prm2 = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    reject("second promise rejected");
-  }, 1000);
-});
-
-Promise.race([prm1, prm2])
-  .then((value) => console.log(value, "promise to race"))
-  .catch((error) => console.log(error, "this is race error"));
-
-const paymentStatus = fetch();
-
-const paymentTimeout = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    reject("Payment timeout");
-  }, 5000);
-});
-
-Promise.race([paymentStatus, paymentTimeout])
-  .then((value) => console.log(value, "promise to race"))
-  .catch((error) => console.log(error, "this is race error"));
-
-//It will wait untill all the promise are executed and it will return if is rejected or resolved
-
-Promise.allSettled([p1, p2, p3])
-  .then((data) => console.log(data, "this is from allsettled"))
-  .catch((error) => console.log(error, "error is from allsettled"));
+function debounce(func, delay) {
+  let timerId;
+  return function () {
+    const context = this;
+    const args = arguments;
+    clearTimeout(timerId);
+    timerId = setTimeout(function () {
+      func.apply(context, args);
+    }, delay);
+  };
+}
