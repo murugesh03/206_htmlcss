@@ -808,3 +808,126 @@ function debounce(func, delay) {
     }, delay);
   };
 }
+
+function searchedValue(query) {
+  console.log(query, "the is searched query");
+}
+
+const debouncedSearch = debounce(searchedValue, 300);
+
+const searchedProd = document.getElementById("searchbox");
+searchedProd.addEventListener("keyup", (e) => {
+  debouncedSearch(e.target.value);
+});
+
+//throttle
+function throttle(func, limit) {
+  let inThrottle;
+  return function () {
+    const context = this;
+    const args = arguments;
+    if (!inThrottle) {
+      console.log(inThrottle, "inthrottle");
+      func.apply(context, args);
+      inThrottle = true;
+      setTimeout(() => (inThrottle = false), limit);
+    }
+  };
+}
+const handleScroll = () => {
+  console.log("scrolling");
+};
+
+const throttledScrollfunction = () => {
+  const scrollTop = window.scrollY;
+  const windowHeight = window.innerHeight;
+  const fullHeight = document.documentElement.scrollHeight;
+  if (scrollTop + windowHeight >= fullHeight - 100) {
+    console.log("Near the bottom of the page");
+    handleScroll();
+  }
+};
+
+window.addEventListener("scroll", throttle(throttledScrollfunction, 100));
+
+//OOPS - Object orirented programming
+
+//Encapsulation
+//Inheritance
+//Polymorpshim
+//Abstraction
+
+//Encapsulation
+class Car {
+  #cc = 1000;
+  constructor(name, model) {
+    this.name = name;
+    this.model = model;
+  }
+  getModelInfo() {
+    return `${this.name} ${this.model}`;
+  }
+
+  startEngine() {
+    this.#igniteCar();
+  }
+
+  #igniteCar() {
+    console.log("Fuel ignited");
+  }
+}
+
+const toyata = new Car("Toyota", "Camry");
+console.log(toyata);
+
+class Animal {
+  constructor(name, species) {
+    this.name = name;
+    this.species = species;
+  }
+  getAnimalInfo() {
+    return `${this.name} is a ${this.species}`;
+  }
+}
+
+class Dog extends Animal {
+  constructor(name, breed, species) {
+    super(name, species);
+    this.breed = breed;
+  }
+  getDogInfo() {
+    return `${this.name} is a ${this.breed}`;
+  }
+}
+
+const lab = new Dog("Lab", "Golden Retriever", "Canine");
+// console.log(lab);
+// console.log(lab.getDogInfo());
+// console.log(lab.getAnimalInfo());
+
+// Polymorphism
+
+class DogTwo extends Animal {
+  constructor(name, breed, species) {
+    super(name, species);
+    this.breed = breed;
+  }
+
+  getAnimalInfo() {
+    return `${this.name} is a ${this.species} and ${this.breed}`;
+  }
+  getDogInfo() {
+    return `${this.name} is a ${this.breed}`;
+  }
+}
+
+const gold = new DogTwo("Gold", "Golden Retriever", "Canine");
+
+console.log(gold.getAnimalInfo(), "this is ploy");
+
+console.log(lab.getAnimalInfo(), "this is old animal class");
+
+//Abstraction
+// # means private method or variable
+// private varibles cannot be declared inside constructor
+// console.log(toyata.#igniteCar);
